@@ -11,6 +11,8 @@ Description:
 /********************           INCLUDE FILES                ******************/
 #include <stdio.h>
 #include <version.h>
+#include <osa/osa.h>
+#include <osa/osa_debug.h>
 /********************              DEFINES                   ******************/
 
 /********************               MACROS                   ******************/
@@ -22,10 +24,15 @@ Description:
 /********************           LOCAL VARIABLES              ******************/
 
 /********************          GLOBAL VARIABLES              ******************/
-
+extern int OSA_tskTestMain(int argc, char **argv);
 /********************              FUNCTIONS                 ******************/
 int main(int argc,char **argv)
 {
+	OSA_DEBUG;
     printf("hello world\n");
+    OSA_init();
+    OSA_tskTestMain(argc,argv);
+    OSA_exit();
+
     return 0;
 }
