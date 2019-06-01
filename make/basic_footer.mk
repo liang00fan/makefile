@@ -14,16 +14,17 @@ CPP_DEPENDS=$(patsubst %.o, $(BUILD_OBJ_DIR)/depend_%.d, $(cppobj-y))
 ASM_DEPENDS=$(patsubst %.o, $(BUILD_OBJ_DIR)/depend_%.d, $(sobj-y))
 REL_DEPENDS=$(patsubst %.o, $(BUILD_OBJ_DIR)/depend_%.d, $(robj-y))
 
-all-to-do:$(BUILD_OBJ_DIR) subdirs $(TARGET)
+all-to-do:$(BUILD_OBJ_DIR) $(BUILD_LIB_DIR) subdirs $(TARGET)
 	
-# Remove same rules
-$(sort $(BUILD_OBJ_DIR) $(BUILD_LIB_SHARE_DIR) $(BUILD_LIB_DIR) $(BUILD_OUTPUT_DIR)):
-	@mkdir -p $@
 #
 # A rule to make subdirectories
 #
 subdirs:$(patsubst %,_subdir_%,$(subdir-y))
 
+# Remove same rules
+$(sort $(BUILD_OBJ_DIR) $(BUILD_LIB_DIR) $(BUILD_OUTPUT_DIR)):
+	@mkdir -p $@
+	
 ifneq ($(strip $(subdir-y)),)
 $(patsubst %,_subdir_%,$(subdir-y)):$(FILE_OBJS)
 	$(Q)$(MAKE) USE_LAST_FILE_OBJS=$(FILE_OBJS) -C $(patsubst _subdir_%,%,$@)

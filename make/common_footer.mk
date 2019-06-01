@@ -29,7 +29,7 @@ BUILD_OBJ_DIR=$(subst ${TOPDIR}/,${TOPDIR}/build/${PRJ}/${APP}/,${CUR_DIR})
 endif
 
 include $(TOPDIR)/make/basic_footer.mk
-
+	
 $(BUILD_OUTPUT_DIR)/lib$(CUR_DIR_NAME).a: dummy
 	$(Q)BUILD_OUTPUT_DIR=$(BUILD_OUTPUT_DIR) \
 		CUR_DIR_NAME=$(CUR_DIR_NAME) \
@@ -45,14 +45,15 @@ $(BUILD_OUTPUT_DIR)/lib$(CUR_DIR_NAME).o: dummy
 		FILE_OBJS=$(FILE_OBJS) \
 		$(MAKE) -f Makefile.build \
 			-C $(TOPDIR)/make $@ --no-print-directory		
-	
+
 $(BINARY):dummy
-	$(Q)LDFLAGS="$(LDFLAGS-y) $(GLOBAL_LDFLAGS)" \
-	BINARY=$(BINARY) \
-	Q=$(Q) \
-	OBJCOPYFLAGS="$(OBJCOPYFLAGS)" \
-	FILE_OBJS=$(FILE_OBJS) \
-	$(MAKE) -f Makefile.build \
-		-C $(TOPDIR)/make $(BINARY) --no-print-directory
-		
+	$(Q)BUILD_OUTPUT_DIR=$(BUILD_OUTPUT_DIR) \
+		LDFLAGS="$(LDFLAGS-y) $(GLOBAL_LDFLAGS)" \
+		BINARY=$(BINARY) \
+		Q=$(Q) \
+		OBJCOPYFLAGS="$(OBJCOPYFLAGS)" \
+		FILE_OBJS=$(FILE_OBJS) \
+		$(MAKE) -f Makefile.build \
+			-C $(TOPDIR)/make $(BINARY) --no-print-directory
+			
 endif # ifndef $(COMMON_FOOTER_MK)
