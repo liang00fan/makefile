@@ -8,6 +8,6 @@
 
 include $(TOPDIR)/make/common_header.mk
 
-obj-y	+= base/
+obj-y	+= osa/
 
 include $(TOPDIR)/make/common_footer.mk

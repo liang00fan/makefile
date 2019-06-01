@@ -11,8 +11,8 @@ Description:
 /********************           INCLUDE FILES                ******************/
 #include <stdio.h>
 #include <version.h>
-#include <base/osa.h>
-#include <base/osa_debug.h>
+#include <osa/osa.h>
+#include <osa/osa_debug.h>
 /********************              DEFINES                   ******************/
 
 /********************               MACROS                   ******************/

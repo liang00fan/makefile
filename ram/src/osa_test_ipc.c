@@ -1,5 +1,5 @@
 
-#include <base/osa_ipc.h>
+#include <osa/osa_ipc.h>
 
 #define OSA_TEST_IPC_SEM_MAX_VALUE  5
 

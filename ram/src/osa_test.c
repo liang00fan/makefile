@@ -1,6 +1,6 @@
 
 
-#include <base/osa_tsk.h>
+#include <osa/osa_tsk.h>
 
 #define AUTO_TEST_DELAY    (1)
 #define MANUAL_TEST_DELAY  (100)
