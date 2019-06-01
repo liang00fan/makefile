@@ -12,8 +12,11 @@ $(BUILD_OUTPUT_DIR)/lib$(CUR_DIR_NAME).a:$(RAM_OBJS)
 $(BUILD_OUTPUT_DIR)/lib$(CUR_DIR_NAME).o:$(RAM_OBJS)
 	$(Q)$(LD) -r -o $@ $(RAM_OBJS)
 
-$(BINARY):$(RAM_OBJS)
+$(BINARY):$(RAM_OBJS) $(BUILD_OUTPUT_DIR)/.build
+	@echo $(BUILD_OUTPUT_DIR)
 	@echo "  [LD] $(subst ${TOPDIR}/,,$@)"
 	$(Q)$(CC) -lstdc++ -o $@ $(RAM_OBJS) \
 			$(LDFLAGS)
+			
+.PHONY:dummy			
 	
