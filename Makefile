@@ -3,8 +3,8 @@
 #VERSION=1 SUBLEVEL=0 PATCHLEVEL=1 PRJ=demo_config APP=demo make
 #
 VERSION ?= 1
-SUBLEVEL ?= 4
-PATCHLEVEL ?= 3
+SUBLEVEL ?= 5
+PATCHLEVEL ?= 0
 PRJ ?= main
 APP ?= src
 
