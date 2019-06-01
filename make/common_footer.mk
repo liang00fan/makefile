@@ -47,7 +47,7 @@ $(BUILD_OUTPUT_DIR)/lib$(CUR_DIR_NAME).o: dummy
 			-C $(TOPDIR)/make $@ --no-print-directory		
 
 $(BINARY):dummy
-	$(Q)BUILD_OUTPUT_DIR=$(BUILD_OUTPUT_DIR) \
+	$(Q)BUILD_OUTPUT_DIR=$(BUILD_OUTPUT_DIR) BUILD_LIB_DIR=$(BUILD_LIB_DIR) \
 		LDFLAGS="$(LDFLAGS-y) $(GLOBAL_LDFLAGS)" \
 		BINARY=$(BINARY) \
 		Q=$(Q) \

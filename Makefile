@@ -4,7 +4,7 @@
 #
 VERSION ?= 1
 SUBLEVEL ?= 5
-PATCHLEVEL ?= 0
+PATCHLEVEL ?= 1
 PRJ ?= main
 APP ?= src
 
