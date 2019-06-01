@@ -11,6 +11,7 @@ Description:
 /********************           INCLUDE FILES                ******************/
 #include <stdio.h>
 #include <version.h>
+#include <base/os_common.h>
 /********************              DEFINES                   ******************/
 
 /********************               MACROS                   ******************/
@@ -26,5 +27,8 @@ Description:
 /********************              FUNCTIONS                 ******************/
 int main(int argc,char **argv)
 {
+	OS_debug;
     printf("hello world\n");
+
+    return 0;
 }

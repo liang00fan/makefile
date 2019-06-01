@@ -8,9 +8,9 @@ CUR_DIR_NAME=$(shell pwd | sed 's,^\(.*/\)\?\([^/]*\),\2,')
 OBJPREFIX=$(subst /,_,$(subst ${TOPDIR}/,,${CUR_DIR}))
 obj-y:=#targets:xxx.c,xxx.cpp,xxx.S
 TARGET=objs#compile this as lib or share or bin
-CFLAGS-y:=#c flag
-CPPFLAGS-y:=#cpp flag
-LDFLAGS-y:=#clear
+CFLAGS-y:=$(SYSROOT)#c flag
+CPPFLAGS-y:=$(SYSROOT)#cpp flag
+LDFLAGS-y:=$(SYSROOT)#clear
 
 ifndef V
 Q:=@

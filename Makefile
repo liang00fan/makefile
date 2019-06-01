@@ -24,7 +24,8 @@ TOPDIR	:= $(shell /bin/pwd)
 SDKPATH         = $(TOPDIR)/include
 HOSTCC          = gcc
 HOSTCFLAGS      = -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer
-CROSS_COMPILE   = 
+CROSS_COMPILE   = #arm-poky-linux-gnueabi-
+CROSS_COMPILE_EXT_FLAGS =# -march=armv7-a -mfpu=neon -mfloat-abi=hard -mcpu=cortex-a9 --sysroot=/opt/fsl-sengw-fb/4.1.15-2.1.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi
 #
 # Include the make variables (CC, etc...)
 #
@@ -42,8 +43,8 @@ OD      		= $(CROSS_COMPILE)objdump
 MD5SUM			= md5sum
 PERL            = perl
 AWK				= awk
-GLOBAL_CFLAGS 	+=-I. -I${TOPDIR}/include -I$(TOPDIR)/libs -Wall
-GLOBAL_LDFLAGS	:= #clear
+GLOBAL_CFLAGS 	+=-I. -I${TOPDIR}/include -I$(TOPDIR)/libs -Wall $(CROSS_COMPILE_EXT_FLAGS)
+GLOBAL_LDFLAGS	:=$(CROSS_COMPILE_EXT_FLAGS)
 export  CONFIG_SHELL TOPDIR SDKPATH HOSTCC HOSTCFLAGS CROSS_COMPILE AS LD CC \
 	CPP AR NM STRIP OC OBJDUMP MAKE MAKEFILES MD5SUM PERL AWK \
 	GLOBAL_CFLAGS GLOBAL_LDFLAGS
